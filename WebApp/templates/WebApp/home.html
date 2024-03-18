@@ -1,0 +1,126 @@
+{% extends "WebApp/base.html" %}
+
+{% load static %}
+
+{% block content %}
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 my-3">
+                    <div class="card" style="text-align: center;">
+                        <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title">Hegoi Murua</h5>
+                        <p class="card-text">Desarrollador</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 my-3">
+                    <div class="card">
+                        <div class="card-body" style="text-align: auto;">
+                            <h4 class="card-title">Datos personales</h5>
+                            <div class="row">
+                                <div class="col-sm-3 col-md-4 col-lg-4 col-xl-4">
+                                    <p >Nombre:</p>
+                                </div>
+                                <div class="col-sm-9 col-md-8 col-lg-8 col-xl-8">
+                                    <p >Hegoi Murua</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3 col-md-4 col-lg-4 col-xl-4">
+                                    <p >Ciudad:</p>
+                                </div>
+                                <div class="col-sm-9 col-md-8 col-lg-8 col-xl-8">
+                                    <p >Almendralejo, España</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3 col-md-4 col-lg-4 col-xl-4">
+                                    <p >Email:</p>
+                                </div>
+                                <div class="col-sm-9 col-md-8 col-lg-8 col-xl-8">
+                                    <p >hegoi.murua@gmail.com</p>
+                                </div>
+                            </div>
+                                
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8">
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 my-3">
+                    <div class="card">
+                        <div class="card-body">
+                        <h2 class="card-title" style="text-align: center;">Sobre mi...</h2>
+                        <p class="card-text">Desarrollador de Phyton full stack con predilección por el trabajo backend.
+                            Desde siempre me han fascinado la informática y el desarrollo de nuevas tecnologías. 
+                            Gran parte de mi tiempo libre lo he dedicado a realizar tareas de software y mantenimiento del hardware, 
+                            aprendiendo y practicando en función de la evolución de los medios informáticos. 
+                            Me gusta jugar videojuegos, especialmente de aplicación estratégica y lógica. 
+                            Y hace dos años descubrí la programación. Desde entonces he hecho diversos cursos 
+                            (HTML, CSS, BOOSTRAP, BBDD…) pero en lo que más he especializado ha sido en Python. 
+                            Siempre procuro escribir un código limpio y fácil de entender. 
+                            He realizado prácticas de programación propuestas en los diferentes cursos y posteriormente 
+                            he desarrollado por mi cuenta algunos proyectos, desde el desarrollo de esta página 
+                            (utilizando Django, html, boostrap) hasta los que se muestran con mayor detalle en “Mis proyectos”.
+                        </p>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 my-3">
+                    <div class="card">
+                        <div class="card-body">
+                        <h2 class="card-title" style="text-align: center;">Aptitudes</h2>
+                            <div class="container">
+                                <div class="row">
+                                    {% for categoria in categorias %}
+                                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
+                                        <h4>{{categoria.nombre}}:</h4>
+                                        {% for aptitud in aptitudes %}
+                                            {% if aptitud.categoria == categoria %}
+                                            <p>
+                                                <img src="{{aptitud.imagen.url}}">  {{aptitud.titulo}}
+                                            </p>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 my-3">
+                    <div class="card">
+                        <div class="card-body">
+                        <h2 class="card-title" style="text-align: center;">Proyectos</h2>
+                        <div class="container">
+                            <div class="row">
+                            {% for proyecto in proyectos %}
+                                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                                <a href="{% url 'selecciona_proyecto' proyecto.id %}">
+                                    <div class="card">
+                                        <h2 class="card-title" style="text-align: center; padding-top: 20px;">{{proyecto.titulo}}</h2>
+                                        <img src="{{proyecto.imagen_1.url}}" class="card-img-top" alt="...">
+                                        
+                                    </div>
+                                </a>
+                                </div>
+                            {% endfor %}
+                            </div>
+                        </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+</main>
+{% endblock %}

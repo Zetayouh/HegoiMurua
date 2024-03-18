@@ -1,0 +1,57 @@
+{% extends "WebApp/base.html" %}
+
+{% load static %}
+
+{% block content %}
+<main>
+    <div class="container">
+        <h2>{{proyecto.titulo}}</h2>
+        <div class="row">
+            
+            <div class="container col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6" style="margin-top: 10px;">
+                        <a href="{{proyecto.imagen_1.url}}">
+                        <img src="{{proyecto.imagen_1.url}}" class="card-img-top" alt="...">
+                        </a>
+                    </div>
+                    {% if proyecto.imagen_2 %}
+                    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6" style="margin-top: 10px;">
+                        <a href="{{proyecto.imagen_2.url}}">
+                        <img src="{{proyecto.imagen_2.url}}" class="card-img-top" alt="...">
+                        </a>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="row">
+                    {% if proyecto.imagen_3 %}
+                    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6" style="margin-top: 10px;">
+                        <a href="{{proyecto.imagen_3.url}}">
+                        <img src="{{proyecto.imagen_3.url}}" class="card-img-top" alt="...">
+                        </a>
+                    </div>
+                    {% endif %}
+                    {% if proyecto.imagen_4 %}
+                    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6" style="margin-top: 10px;">
+                        <a href="{{proyecto.imagen_4.url}}">
+                        <img src="{{proyecto.imagen_4.url}}" class="card-img-top" alt="...">
+                        </a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="container col-sm-12 col-md-12 col-lg-6 col-xl-6" style="margin-top: 10px;">
+                <h5>Fecha de creación:</h5>
+                <p>{{proyecto.fecha}}</p>
+                <h5>Descripción:</h5>
+                <p>{{proyecto.descripcion}}</p>
+                <h5>Lenguaje:</h5>
+                <p>{{proyecto.lenguaje}}</p>
+                <h5>Librerias:</h5>
+                <p>{{proyecto.herramientas}}</p>
+            </div>
+        </div>    
+        
+    </div>
+</main>
+{% endblock %}
